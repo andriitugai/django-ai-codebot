@@ -9,6 +9,10 @@ def main():
     with open('django.cfg') as cfg_file:
         secret = cfg_file.read()
         os.environ['SECRET_KEY'] = secret
+
+    with open('openai.cfg') as cfg_file:
+        secret = cfg_file.read()
+        os.environ['OPENAI_SECRET_KEY'] = secret
         
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'codebot.settings')
     try:
