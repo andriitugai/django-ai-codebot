@@ -2,6 +2,9 @@
 
 {% block content %}
 
+
+{% if user.is_authenticated %}
+
 {% if response %}
 <pre>
 <code class='line-numbers language-{{lang}}'>
@@ -69,6 +72,26 @@ class Solution:
 </form>
 
 
+{% endif %}
+
+{% else %}
+
+<div class="col-6-6 offset-md-3">
+	<h1>Login</h1>
+<form method="POST" action="{% url 'login' %}">
+	{% csrf_token %}
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Enter Username" name="username">
+		<br />
+	</div>
+	<div class="form-group">
+		<input type="password" class="form-control" placeholder="Enter Password" name="password">
+		<br />
+	</div>
+	<br />
+	<button type="submit" class="btn btn-secondary">Login</button>
+</form>
+</div>
 {% endif %}
 
 {% endblock %}
